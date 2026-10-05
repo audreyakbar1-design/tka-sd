@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKA SD HOTS Challenge — Kelas 2 & 5</title>
+<meta name="description" content="500 soal TKA (Tes Kemampuan Akademik) HOTS tingkat nasional untuk kelas 2 dan kelas 5 SD — soal harian diacak otomatis">
+<style>
+  :root{
+    --primary:#0f766e; --primary-dark:#115e59; --accent:#f59e0b;
+    --ok:#16a34a; --bad:#dc2626; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Comic Sans MS','Segoe UI',system-ui,sans-serif;
+    color:var(--ink); min-height:100vh; padding:16px;
+    background:linear-gradient(135deg,#ccfbf1,#dbeafe 50%,#fef3c7);
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:clamp(1.4rem,5vw,2.1rem);color:var(--primary)}
+  header p{color:var(--muted);font-size:.95rem}
+  .chip{display:inline-block;background:var(--accent);color:#7c2d12;font-weight:bold;
+    border-radius:999px;padding:4px 14px;font-size:.85rem;margin-top:8px}
+  .card{background:var(--card);border-radius:20px;padding:22px;
+    box-shadow:0 8px 24px rgba(15,118,110,.12);margin-bottom:14px}
+  .btn{display:block;width:100%;border:none;cursor:pointer;font-family:inherit;
+    font-size:1.05rem;border-radius:14px;padding:15px 18px;margin-top:10px;
+    background:var(--primary);color:#fff;font-weight:bold;transition:transform .1s}
+  .btn:active{transform:scale(.98)}
+  .btn:disabled{background:#99f6e4;cursor:not-allowed}
+  .btn.secondary{background:#ccfbf1;color:var(--primary)}
+  .btn.kelas2{background:#6d28d9}
+  .btn.kelas5{background:#0369a1}
+  .pilih{display:flex;gap:10px}
+  .pilih .btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:18px 10px}
+  .pilih .btn b{font-size:1.6rem}
+  .pilih .btn span{font-size:.8rem;font-weight:normal;opacity:.9}
+  .bar{height:12px;background:#e6fffa;border-radius:999px;overflow:hidden}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));
+    transition:width .3s;border-radius:999px}
+  .meta{display:flex;justify-content:space-between;align-items:center;
+    font-size:.9rem;color:var(--muted);margin-bottom:8px;gap:8px}
+  .lv{background:#ccfbf1;color:var(--primary);border-radius:999px;padding:3px 10px;font-weight:bold}
+  .qtext{font-size:1.25rem;line-height:1.55;margin:14px 0 6px;font-weight:bold;white-space:pre-line}
+  .vis{text-align:center;font-size:2.4rem;letter-spacing:.3em;margin:8px 0}
+  .opt{display:block;width:100%;text-align:left;background:#f0fdfa;border:2px solid #99f6e4;
+    border-radius:14px;padding:14px 16px;margin-top:10px;font-family:inherit;font-size:1.05rem;
+    cursor:pointer;line-height:1.4;transition:background .15s}
+  .opt:hover{background:#ccfbf1}
+  .opt .k{display:inline-block;width:26px;font-weight:bold;color:var(--primary)}
+  .opt.sel{background:var(--primary);color:#fff;border-color:var(--primary-dark)}
+  .opt.sel .k{color:#fde68a}
+  .scorebox{text-align:center}
+  .circle{width:130px;height:130px;border-radius:50%;margin:10px auto;
+    display:flex;flex-direction:column;justify-content:center;
+    background:conic-gradient(var(--ok) calc(var(--p)*%),#e6fffa 0)}
+  .circle .in{background:#fff;width:104px;height:104px;border-radius:50%;margin:13px auto;
+    display:flex;flex-direction:column;justify-content:center}
+  .circle b{font-size:2rem;color:var(--primary)}
+  .circle span{font-size:.8rem;color:var(--muted)}
+  .badge{font-size:1.3rem;font-weight:bold;color:var(--accent);margin-top:6px}
+  .rev{border-top:2px solid #f3f4f6;padding:14px 0;font-size:.98rem}
+  .rev .st{font-weight:bold;border-radius:8px;padding:2px 8px;font-size:.85rem}
+  .st.good{background:#dcfce7;color:var(--ok)}
+  .st.wrong{background:#fee2e2;color:var(--bad)}
+  .rev .qq{margin:8px 0 4px;font-weight:bold}
+  .rev .ans{line-height:1.7}
+  .rev .exp{background:#fffbeb;border-left:4px solid var(--accent);
+    padding:8px 10px;margin-top:8px;border-radius:0 8px 8px 0;font-size:.92rem}
+  .hrow{display:flex;align-items:center;gap:8px;background:#f8fafc;border:2px solid #ccfbf1;
+    border-radius:12px;padding:9px 13px;margin-top:8px;font-size:.98rem}
+  .hdate{margin-left:auto;color:var(--muted);font-size:.82rem}
+  .hide{display:none}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:18px}
+  @media print{
+    body{background:#fff;padding:0}.noprint{display:none!important}
+    .card{box-shadow:none;border:1px solid #ddd}
+  }
+</style>
+  <script src="pool.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🧠 TKA SD HOTS Challenge 🧠</h1>
+    <p>Tes Kemampuan Akademik · 30 Soal Harian · Tingkat Nasional</p>
+    <span class="chip">Bank 500 soal per kelas · Level C4–C6</span>
+  </header>
+
+  <!-- PILIH KELAS -->
+  <section id="kelas" class="card">
+    <p style="line-height:1.8">
+      Halo! 👋 Ini latihan <b>TKA (Tes Kemampuan Akademik)</b> untuk SD —
+      soal berpikir tingkat tinggi (HOTS) tingkat nasional: analisis, evaluasi, dan kreasi.
+      Pilih kelasmu:
+    </p>
+    <div class="pilih">
+      <button class="btn kelas2" id="go2"><b>2</b><span>Kelas 2 SD · 500 soal</span></button>
+      <button class="btn kelas5" id="go5"><b>5</b><span>Kelas 5 SD · 500 soal</span></button>
+    </div>
+    <p id="daily" style="margin-top:14px;font-weight:bold;color:var(--primary)"></p>
+    <label class="small" for="nm" style="display:block;margin-top:14px;font-weight:bold;color:var(--primary)">Namamu (opsional, tampil di hasil) ✏️</label>
+    <input class="name" id="nm" type="text" maxlength="30" placeholder="Contoh: Aisyah"
+      style="width:100%;margin-top:6px;padding:13px 14px;border:2px solid #99f6e4;border-radius:12px;font-family:inherit;font-size:1rem">
+    <div id="histbox" class="hide">
+      <h2 style="color:var(--primary);margin-top:20px;font-size:1.1rem">📜 Riwayat Skor</h2>
+      <div id="hist"></div>
+      <button class="btn secondary" id="clearHist" style="font-size:.9rem;padding:10px">🗑️ Hapus Riwayat</button>
+    </div>
+  </section>
+
+  <!-- SOAL -->
+  <section id="quiz" class="hide">
+    <div class="card">
+      <div class="meta">
+        <span id="cnt">Soal 1 / 30</span>
+        <span class="lv" id="lv">🔍 Analisis</span>
+      </div>
+      <div class="bar"><i id="fill" style="width:0%"></i></div>
+      <div class="vis" id="vis" aria-hidden="true"></div>
+      <div class="qtext" id="qtext" role="region" aria-live="polite"></div>
+      <div id="opts"></div>
+    </div>
+    <button class="btn" id="next" disabled>Soal Berikutnya ➜</button>
+    <button class="btn secondary noprint" id="quit">⏱️ Selesai &amp; Lihat Nilai</button>
+  </section>
+
+  <!-- HASIL -->
+  <section id="res" class="hide">
+    <div class="card scorebox">
+      <div id="who" style="font-weight:bold;font-size:1.1rem"></div>
+      <div class="circle" id="circ" style="--p:0">
+        <div class="in"><b id="sc">0</b><span>dari 30</span></div>
+      </div>
+      <div class="badge" id="bdg"></div>
+      <p id="msg" style="margin-top:8px;line-height:1.7"></p>
+      <p id="saved" class="hide" style="color:var(--ok);font-weight:bold;margin-top:6px">✅ Skor tersimpan di riwayat (perangkat ini)</p>
+      <button class="btn" id="again">🔁 Kerjakan Ulang</button>
+      <button class="btn secondary noprint" id="printBtn">🖨️ Cetak Pembahasan</button>
+      <button class="btn secondary noprint" id="gantiKelas">↩️ Ganti Kelas</button>
+    </div>
+    <div class="card" id="revbox"></div>
+  </section>
+
+  <footer>Dibuat untuk pembelajaran SD · HOTS: C4 Analisis · C5 Evaluasi · C6 Kreasi</footer>
+</div>
+
+<script>
+// ponytail: tanpa timer/shuffle manual — soal harian + localStorage sudah cukup; tambah API kalau guru perlu lihat skor semua siswa
+const LVNAME={C4:"🔍 Analisis (C4)",C5:"⭐ Evaluasi (C5)",C6:"🛠️ Kreasi (C6)"};
+const HKEY="tka_scores_v1";
+let KELAS=null, DATA=[], QUIZ=[];
+let i=0, ans=[];
+
+// ---- soal harian: seed tanggal, komposisi level selalu sama tiap hari, opsi diacak ----
+function daySeed(d){d=d||new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(a,r){for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function dailySet(pool,n,seed){
+  var rnd=mulberry32(seed===undefined?daySeed():seed);
+  var by={};pool.forEach(function(q,k){(by[q.lv]=by[q.lv]||[]).push(k)});
+  var lvs=Object.keys(by),takes={},fr=[],sum=0;
+  lvs.forEach(function(lv){var ex=n*by[lv].length/pool.length,t=Math.floor(ex);takes[lv]=t;sum+=t;fr.push([lv,ex-t])});
+  fr.sort(function(a,b){return b[1]-a[1]});
+  var gi=0;
+  while(sum<n&&gi<1000){var lv2=fr[gi%fr.length][0];if(takes[lv2]<by[lv2].length){takes[lv2]++;sum++}gi++}
+  var picks=[];
+  lvs.forEach(function(lv){
+    shuffle(by[lv].slice(),rnd).slice(0,takes[lv]).forEach(function(k){picks.push(k)});
+  });
+  shuffle(picks,rnd);
+  return picks.slice(0,Math.min(n,picks.length)).map(function(k){
+    var q=pool[k],ord=shuffle([0,1,2,3],rnd);
+    return{lv:q.lv,vis:q.vis,q:q.q,o:ord.map(function(ii){return q.o[ii]}),a:ord.indexOf(q.a),e:q.e};
+  });
+}
+
+// ---- simpan skor: localStorage per perangkat ----
+const getH=()=>{try{return JSON.parse(localStorage.getItem(HKEY))||[]}catch(e){return[]}};
+const setH=h=>{try{localStorage.setItem(HKEY,JSON.stringify(h))}catch(e){}};
+const medal=s=>s>=27?"🏆":s>=21?"⭐":s>=15?"👍":"💪";
+function renderHist(){
+  const h=getH();
+  $("histbox").classList.toggle("hide",!h.length);
+  $("hist").innerHTML=h.map(r=>
+    `<div class="hrow">${medal(r.s)} <b>${esc(r.n||"Anonim")}</b> — kelas ${r.k} — <b>${r.s}/30</b><span class="hdate">${r.d}</span></div>`).join("");
+}
+function pushScore(name,s){
+  const h=getH();
+  h.unshift({n:name||"Anonim",k:KELAS,s:s,d:new Date().toLocaleDateString("id-ID",{day:"2-digit",month:"short",year:"numeric"})});
+  setH(h.slice(0,20)); renderHist();
+}
+
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]))}
+
+function mulai(k){
+  KELAS=k;
+  DATA=(k===2?window.TKA2:window.TKA5)||[];
+  QUIZ=dailySet(DATA,30);
+  i=0; ans=new Array(QUIZ.length).fill(-1);
+  $("kelas").classList.add("hide");
+  $("res").classList.add("hide");
+  $("quiz").classList.remove("hide");
+  show();
+}
+$("go2").onclick=()=>mulai(2);
+$("go5").onclick=()=>mulai(5);
+$("gantiKelas").onclick=()=>{
+  $("res").classList.add("hide");
+  $("kelas").classList.remove("hide");
+  renderHist();
+};
+
+function show(){
+  const d=QUIZ[i];
+  $("cnt").textContent=`Soal ${i+1} / ${QUIZ.length}`;
+  $("lv").textContent=LVNAME[d.lv];
+  $("fill").style.width=(i/QUIZ.length*100)+"%";
+  $("vis").textContent=d.vis;
+  $("qtext").textContent=d.q;
+  const box=$("opts"); box.innerHTML="";
+  d.o.forEach((t,k)=>{
+    const b=document.createElement("button");
+    b.className="opt"+(ans[i]===k?" sel":"");
+    b.innerHTML=`<span class="k">${"ABCD"[k]}.</span> ${esc(t)}`;
+    b.disabled=ans[i]>-1;
+    b.onclick=()=>{ans[i]=k;[...box.children].forEach((c,j)=>c.classList.toggle("sel",j===k));
+      box.querySelectorAll(".opt").forEach(c=>c.disabled=true);
+      $("next").disabled=false; $("fill").style.width=((i+1)/QUIZ.length*100)+"%";};
+    box.appendChild(b);
+  });
+  $("next").disabled=ans[i]===-1;
+  $("next").textContent = i===QUIZ.length-1 ? "🏁 Selesai & Lihat Nilai" : "Soal Berikutnya ➜";
+}
+$("next").onclick=()=>{ if(i<QUIZ.length-1){i++;show();} else finish(); };
+$("quit").onclick=finish;
+$("again").onclick=()=>{i=0;ans.fill(-1);$("res").classList.add("hide");$("quiz").classList.remove("hide");show();};
+$("printBtn").onclick=()=>window.print();
+
+function finish(){
+  const sc=ans.reduce((n,v,k)=>n+(v===QUIZ[k].a?1:0),0);
+  const p=Math.round(sc/QUIZ.length*100);
+  $("quiz").classList.add("hide"); $("res").classList.remove("hide");
+  const nm=document.body.dataset.name||$("nm").value.trim();
+  $("who").textContent=nm?`🏅 Hasil untuk ${nm} (Kelas ${KELAS})`:`🏅 Hasil Belajarmu (Kelas ${KELAS})`;
+  $("sc").textContent=sc; $("circ").style.setProperty("--p",p);
+  let bdg,msg;
+  if(p>=90){bdg="🏆 Juara TKA!";msg="Luar biasa! Kamu sangat kuat menganalisis dan berpikir kritis. Pertahankan!";}
+  else if(p>=75){bdg="⭐ Hebat!";msg="Kerja bagus! Hampir semua soal benar. Pelajari lagi soal yang salah ya.";}
+  else if(p>=60){bdg="👍 Bagus!";msg="Bagus! Terus berlatih soal cerita dan logika, kamu pasti bisa lebih baik.";}
+  else{bdg="💪 Terus Berlatih!";msg="Jangan menyerah! Baca lagi pembahasan tiap soal, lalu coba sekali lagi.";}
+  $("bdg").textContent=bdg; $("msg").textContent=msg;
+  pushScore(nm,sc); $("saved").classList.remove("hide");
+  const rb=$("revbox"); rb.innerHTML="<h2 style='color:var(--primary)'>📖 Pembahasan</h2>";
+  QUIZ.forEach((d,k)=>{
+    const ok=ans[k]===d.a;
+    const you=ans[k]>-1?"ABCD"[ans[k]]+"> "+esc(d.o[ans[k]]):"Tidak dijawab";
+    rb.insertAdjacentHTML("beforeend",
+     `<div class="rev">
+        <span class="st ${ok?'good':'wrong'}">${ok?'✔ Benar':'✘ Salah'} · Soal ${k+1} · ${LVNAME[d.lv]}</span>
+        <div class="qq">${esc(d.q)}</div>
+        <div class="ans">Jawabanmu: ${you}<br>Jawaban benar: <b>${"ABCD"[d.a]}. ${esc(d.o[d.a])}</b></div>
+        <div class="exp">💡 ${esc(d.e)}</div>
+      </div>`);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("clearHist").onclick=()=>{setH([]);renderHist();};
+renderHist();
+$("daily").textContent="📅 Urutan soal & pilihan jawaban diacak tiap hari, "+new Date().toLocaleDateString("id-ID",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+</script>
+</body>
+</html>
