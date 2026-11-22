@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Quadra Kelas 2 — PAI & Matematika</title>
+<meta name="description" content="Latihan soal PAI dan Matematika kelas 2 SD sesuai buku Quadra — 50 soal tiap mapel, untuk Senin 23 November 2026.">
+<style>
+  :root{
+    --primary:#0f766e; --primary-dark:#115e59; --accent:#f59e0b;
+    --ok:#16a34a; --bad:#dc2626; --card:#fff; --ink:#1f2937; --muted:#6b7280;
+    --pai:#7c3aed; --mat:#0369a1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Comic Sans MS','Segoe UI',system-ui,sans-serif;
+    color:var(--ink); min-height:100vh; padding:14px;
+    background:linear-gradient(135deg,#ede9fe,#ccfbf1 45%,#fef3c7);
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  header{text-align:center;margin-bottom:14px}
+  header h1{font-size:clamp(1.35rem,5vw,2rem);color:var(--primary);line-height:1.25}
+  header p{color:var(--muted);font-size:.92rem;margin-top:3px}
+  .chip{display:inline-block;background:var(--accent);color:#7c2d12;font-weight:bold;
+    border-radius:999px;padding:4px 14px;font-size:.82rem;margin-top:7px}
+  .card{background:var(--card);border-radius:20px;padding:20px;
+    box-shadow:0 8px 24px rgba(15,118,110,.12);margin-bottom:14px}
+  .btn{display:block;width:100%;border:none;cursor:pointer;font-family:inherit;
+    font-size:1.03rem;border-radius:14px;padding:14px 18px;margin-top:10px;
+    background:var(--primary);color:#fff;font-weight:bold;transition:transform .1s,filter .15s;
+    text-align:center;text-decoration:none}
+  .btn:hover{filter:brightness(1.05)}
+  .btn:active{transform:scale(.985)}
+  .btn:disabled{background:#cbd5e1;color:#64748b;cursor:not-allowed}
+  .btn.ghost{background:#f0fdfa;color:var(--primary);border:2px solid #99f6e4}
+  .btn.warn{background:#fff7ed;color:#b45309;border:2px solid #fed7aa}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .subj{border:none;border-radius:20px;padding:18px 16px;cursor:pointer;font-family:inherit;
+    color:#fff;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.12);transition:transform .1s}
+  .subj:active{transform:scale(.985)}
+  .subj.pai{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+  .subj.mat{background:linear-gradient(135deg,#0369a1,#38bdf8)}
+  .subj .ico{font-size:2rem}
+  .subj b{display:block;font-size:1.15rem;margin-top:4px}
+  .subj small{display:block;font-size:.82rem;opacity:.95;margin-top:3px;line-height:1.4}
+  .subj .prog{display:inline-block;margin-top:9px;background:rgba(255,255,255,.22);
+    border-radius:999px;padding:3px 10px;font-size:.76rem;font-weight:bold}
+  .meta{display:flex;justify-content:space-between;align-items:center;
+    font-size:.88rem;color:var(--muted);margin-bottom:8px;gap:8px}
+  .badge{background:#f1f5f9;color:#334155;border-radius:999px;padding:3px 10px;font-weight:bold;font-size:.78rem}
+  .bar{height:12px;background:#e6fffa;border-radius:999px;overflow:hidden;margin-bottom:4px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));
+    transition:width .25s;border-radius:999px}
+  .qtext{font-size:1.22rem;line-height:1.55;margin:14px 0 4px;font-weight:bold;white-space:pre-line}
+  .opt{display:block;width:100%;text-align:left;background:#f8fafc;border:2px solid #e2e8f0;
+    border-radius:14px;padding:13px 15px;margin-top:9px;font-family:inherit;font-size:1.02rem;
+    cursor:pointer;line-height:1.4;transition:background .15s,border-color .15s;color:var(--ink)}
+  .opt:hover:not(:disabled){background:#f0fdfa;border-color:#99f6e4}
+  .opt .k{display:inline-block;width:25px;font-weight:bold;color:var(--primary)}
+  .opt.sel{background:#ecfeff;border-color:var(--primary)}
+  .opt.good{background:#dcfce7;border-color:var(--ok)}
+  .opt.bad{background:#fee2e2;border-color:var(--bad)}
+  .opt:disabled{cursor:default;opacity:1}
+  .inp{width:100%;padding:14px;border:2px solid #99f6e4;border-radius:14px;
+    font-family:inherit;font-size:1.1rem;margin-top:10px;background:#f8fafc}
+  .inp:focus{outline:none;border-color:var(--primary);background:#fff}
+  .inp:disabled{background:#f1f5f9;color:#334155}
+  .tf{display:flex;gap:10px}
+  .tf .opt{margin-top:10px;text-align:center;font-weight:bold;font-size:1.05rem}
+  .fb{border-radius:14px;padding:12px 14px;margin-top:12px;line-height:1.6;font-size:.98rem}
+  .fb.ok{background:#dcfce7;border-left:5px solid var(--ok)}
+  .fb.no{background:#fee2e2;border-left:5px solid var(--bad)}
+  .fb b{font-size:1.02rem}
+  .scorebox{text-align:center}
+  .big{font-size:2.6rem;font-weight:bold;color:var(--primary);line-height:1.1}
+  .sub{color:var(--muted);font-size:.9rem}
+  .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+  .stat{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:9px 6px;text-align:center}
+  .stat b{display:block;font-size:1.15rem;color:var(--primary)}
+  .stat span{font-size:.75rem;color:var(--muted)}
+  .rev{border-top:2px solid #f1f5f9;padding:12px 0;font-size:.95rem}
+  .rev .qq{font-weight:bold;margin-bottom:4px;line-height:1.45}
+  .rev .ans{line-height:1.65}
+  .rev .ans .good{color:var(--ok);font-weight:bold}
+  .rev .ans .bad{color:var(--bad);font-weight:bold}
+  .hide{display:none!important}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:16px;line-height:1.6}
+  .back{display:inline-block;color:var(--primary);text-decoration:none;font-weight:bold;font-size:.9rem;margin-bottom:8px}
+  .note{font-size:.85rem;color:var(--muted);line-height:1.6;margin-top:8px}
+  @media print{
+    body{background:#fff;padding:0}
+    .noprint{display:none!important}
+    #home,#quiz,#result{display:none!important}
+    .card{box-shadow:none;border:1px solid #ddd}
+    #printArea{display:block!important}
+  }
+  #printArea{display:none}
+  .pTitle{font-size:16pt;font-weight:bold;text-align:center;margin-bottom:2mm}
+  .pMeta{text-align:center;font-size:10pt;margin-bottom:4mm}
+  .pSec{font-weight:bold;font-size:11.5pt;margin:5mm 0 2mm}
+  .pQ{font-size:10.5pt;line-height:1.5;margin:2.2mm 0 0.6mm}
+  .pO{font-size:10.5pt;margin-left:6mm;line-height:1.45}
+  .pKey{font-size:10pt;line-height:1.6}
+  .pBreak{page-break-before:always}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="noprint">
+    <h1>📚 Latihan Quadra — Kelas 2 SD</h1>
+    <p>SD Islam Al-Syukro Universal · Senin, 23 November 2026</p>
+    <span class="chip">PAI &amp; Matematika · 50 soal masing-masing</span>
+  </header>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="card">
+      <p style="line-height:1.75">
+        Latihan ini disusun dari buku <b>Quadra</b>:
+        <b>PAI &amp; Budi Pekerti 2</b> (Pelajaran 4–5) dan
+        <b>Spekta Matematika 2</b> (Pelajaran 4–5).
+        Tiap mapel berisi <b>50 soal</b>: 25 pilihan ganda, 15 isian singkat, dan 10 benar/salah.
+      </p>
+      <div class="grid" style="margin-top:14px">
+        <button class="subj pai" onclick="startSubject('pai')">
+          <div class="ico">📖</div>
+          <b>PAI</b>
+          <small>Mari Kita Salat · Kisah Nabi Nuh a.s.</small>
+          <span class="prog" id="prog-pai">50 soal</span>
+        </button>
+        <button class="subj mat" onclick="startSubject('mat')">
+          <div class="ico">🔢</div>
+          <b>Matematika</b>
+          <small>Penjumlahan &amp; Pengurangan · Posisi Benda dan Pola</small>
+          <span class="prog" id="prog-mat">50 soal</span>
+        </button>
+      </div>
+      <a class="btn ghost noprint" href="index.html" style="margin-top:14px">← Kembali ke TKA SD</a>
+      <button class="btn warn noprint" onclick="printSheet()" style="margin-top:8px">🖨️ Cetak soal versi kertas</button>
+    </div>
+    <div class="card">
+      <b style="color:var(--primary)">💡 Cara pakai</b>
+      <p class="note">
+        Kerjakan satu soal, tekan <b>Periksa Jawaban</b>, lalu <b>Lanjut</b>.
+        Jawaban tersimpan otomatis di perangkat ini, jadi bisa dilanjutkan nanti.
+        Di akhir mapel kamu mendapat nilai 0–100 dan daftar soal yang perlu diulang.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hide">
+    <a href="#" class="back noprint" onclick="goHome(event)">← Pilih mapel lain</a>
+    <div class="card">
+      <div class="meta">
+        <span id="qcount">Soal 1 / 50</span>
+        <span class="badge" id="qtype">Pilihan Ganda</span>
+      </div>
+      <div class="bar"><i id="fill" style="width:0%"></i></div>
+      <div class="qtext" id="qtext" aria-live="polite"></div>
+      <div id="answerArea"></div>
+      <div id="feedback"></div>
+    </div>
+    <button class="btn" id="checkBtn" onclick="checkAnswer()">✅ Periksa Jawaban</button>
+    <button class="btn hide" id="nextBtn" onclick="nextQuestion()">Lanjut ➜</button>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hide">
+    <div class="card scorebox">
+      <div style="font-size:.9rem;color:var(--muted)" id="resSubject"></div>
+      <div class="big" id="score">0</div>
+      <div class="sub">dari 100</div>
+      <div style="font-size:1.5rem;margin-top:6px" id="emoji">🏆</div>
+      <p style="margin-top:6px;line-height:1.65" id="resMsg"></p>
+      <div class="statgrid">
+        <div class="stat"><b id="stCorrect">0</b><span>Benar</span></div>
+        <div class="stat"><b id="stWrong">0</b><span>Salah</span></div>
+        <div class="stat"><b id="stTotal">50</b><span>Soal</span></div>
+      </div>
+      <button class="btn" onclick="retrySubject()">🔁 Ulangi mapel ini</button>
+      <button class="btn ghost noprint" onclick="printSheet()">🖨️ Cetak soal</button>
+      <a class="btn ghost noprint" href="index.html">← Kembali ke TKA SD</a>
+      <button class="btn ghost noprint" onclick="goHome()">📚 Pilih mapel lain</button>
+    </div>
+    <div class="card">
+      <b style="color:var(--primary)">📖 Soal yang perlu diulang</b>
+      <div id="review" style="margin-top:8px"></div>
+    </div>
+  </section>
+
+  <footer class="noprint">
+    Sumber: Buku Quadra — PAI &amp; Budi Pekerti 2 (Edisi Ketiga, 2026) · Spekta Matematika 2 (2026)<br>
+    Dibuat untuk latihan mandiri kelas 2 SD.
+  </footer>
+
+  <div id="printArea"></div>
+</div>
+
+<script>
+const DATA = {
+ "pai": {
+  "name": "PAI",
+  "full": "Pendidikan Agama Islam",
+  "icon": "📖",
+  "book": "PAI & Budi Pekerti 2 — Quadra (Edisi Ketiga, 2026)",
+  "topic": "Pelajaran 4: Mari Kita Salat · Pelajaran 5: Kisah Nabi Nuh a.s.",
+  "sections": [
+   {
+    "type": "mc",
+    "label": "A. Pilihan Ganda",
+    "items": [
+     {
+      "n": 1,
+      "q": "Salat fardu hukumnya ....",
+      "o": [
+       "wajib",
+       "makruh",
+       "sunnah"
+      ],
+      "a": 0
+     },
+     {
+      "n": 2,
+      "q": "Salat merupakan rukun Islam yang ke ....",
+      "o": [
+       "satu",
+       "dua",
+       "tiga"
+      ],
+      "a": 1
+     },
+     {
+      "n": 3,
+      "q": "Perintah salat datang dari ....",
+      "o": [
+       "malaikat",
+       "manusia",
+       "Allah Swt."
+      ],
+      "a": 2
+     },
+     {
+      "n": 4,
+      "q": "Salat fardu dikerjakan ... kali dalam sehari semalam.",
+      "o": [
+       "lima",
+       "tujuh",
+       "tiga"
+      ],
+      "a": 0
+     },
+     {
+      "n": 5,
+      "q": "Salat Subuh berjumlah ... rakaat.",
+      "o": [
+       "empat",
+       "dua",
+       "tiga"
+      ],
+      "a": 1
+     },
+     {
+      "n": 6,
+      "q": "Salat Zuhur berjumlah ... rakaat.",
+      "o": [
+       "dua",
+       "tiga",
+       "empat"
+      ],
+      "a": 2
+     },
+     {
+      "n": 7,
+      "q": "Salat Asar berjumlah ... rakaat.",
+      "o": [
+       "empat",
+       "tiga",
+       "dua"
+      ],
+      "a": 0
+     },
+     {
+      "n": 8,
+      "q": "Salat Magrib berjumlah ... rakaat.",
+      "o": [
+       "dua",
+       "tiga",
+       "empat"
+      ],
+      "a": 1
+     },
+     {
+      "n": 9,
+      "q": "Salat Isya berjumlah ... rakaat.",
+      "o": [
+       "tiga",
+       "dua",
+       "empat"
+      ],
+      "a": 2
+     },
+     {
+      "n": 10,
+      "q": "Salat yang dikerjakan setelah matahari terbenam adalah ....",
+      "o": [
+       "Magrib",
+       "Subuh",
+       "Zuhur"
+      ],
+      "a": 0
+     },
+     {
+      "n": 11,
+      "q": "Sebelum salat, kita harus ....",
+      "o": [
+       "bermain",
+       "berwudu",
+       "tidur"
+      ],
+      "a": 1
+     },
+     {
+      "n": 12,
+      "q": "Salat dimulai dengan ....",
+      "o": [
+       "salam",
+       "rukuk",
+       "takbiratul ihram"
+      ],
+      "a": 2
+     },
+     {
+      "n": 13,
+      "q": "Salat diakhiri dengan ....",
+      "o": [
+       "salam",
+       "takbir",
+       "rukuk"
+      ],
+      "a": 0
+     },
+     {
+      "n": 14,
+      "q": "Gerakan membungkukkan badan dengan tangan memegang lutut disebut ....",
+      "o": [
+       "duduk",
+       "rukuk",
+       "sujud"
+      ],
+      "a": 1
+     },
+     {
+      "n": 15,
+      "q": "Gerakan meletakkan dahi ke lantai disebut ....",
+      "o": [
+       "rukuk",
+       "berdiri",
+       "sujud"
+      ],
+      "a": 2
+     },
+     {
+      "n": 16,
+      "q": "Nabi Nuh a.s. diutus Allah untuk berdakwah kepada ....",
+      "o": [
+       "kaumnya",
+       "para malaikat",
+       "binatang"
+      ],
+      "a": 0
+     },
+     {
+      "n": 17,
+      "q": "Nabi Nuh mengajak kaumnya menyembah ....",
+      "o": [
+       "matahari",
+       "Allah Swt.",
+       "berhala"
+      ],
+      "a": 1
+     },
+     {
+      "n": 18,
+      "q": "Kaum Nabi Nuh banyak yang ... dakwahnya.",
+      "o": [
+       "mendukung",
+       "menerima",
+       "menolak"
+      ],
+      "a": 2
+     },
+     {
+      "n": 19,
+      "q": "Allah memerintahkan Nabi Nuh membuat ....",
+      "o": [
+       "kapal besar",
+       "rumah",
+       "jembatan"
+      ],
+      "a": 0
+     },
+     {
+      "n": 20,
+      "q": "Kapal Nabi Nuh disebut ....",
+      "o": [
+       "istana",
+       "bahtera",
+       "masjid"
+      ],
+      "a": 1
+     },
+     {
+      "n": 21,
+      "q": "Yang ikut naik kapal Nabi Nuh adalah orang beriman dan ....",
+      "o": [
+       "tanaman",
+       "batu",
+       "hewan"
+      ],
+      "a": 2
+     },
+     {
+      "n": 22,
+      "q": "Kaum yang menolak dakwah Nabi Nuh ditenggelamkan oleh ....",
+      "o": [
+       "banjir bandang",
+       "angin",
+       "gempa"
+      ],
+      "a": 0
+     },
+     {
+      "n": 23,
+      "q": "Anak Nabi Nuh yang tidak beriman bernama ....",
+      "o": [
+       "Yusuf",
+       "Kan’an",
+       "Ismail"
+      ],
+      "a": 1
+     },
+     {
+      "n": 24,
+      "q": "Kapal Nabi Nuh berlabuh di ....",
+      "o": [
+       "Gunung Sinai",
+       "Gunung Merapi",
+       "Gunung Judi"
+      ],
+      "a": 2
+     },
+     {
+      "n": 25,
+      "q": "Sikap Nabi Nuh ketika ditolak kaumnya adalah ....",
+      "o": [
+       "sabar",
+       "menyerah",
+       "marah"
+      ],
+      "a": 0
+     }
+    ]
+   },
+   {
+    "type": "isian",
+    "label": "B. Isian Singkat",
+    "items": [
+     {
+      "n": 26,
+      "q": "Salat fardu ada ... waktu.",
+      "accept": [
+       "lima",
+       "5"
+      ],
+      "a": "lima"
+     },
+     {
+      "n": 27,
+      "q": "Salat Magrib berjumlah ... rakaat.",
+      "accept": [
+       "tiga",
+       "3"
+      ],
+      "a": "tiga"
+     },
+     {
+      "n": 28,
+      "q": "Salat Isya berjumlah ... rakaat.",
+      "accept": [
+       "empat",
+       "4"
+      ],
+      "a": "empat"
+     },
+     {
+      "n": 29,
+      "q": "Sebelum salat kita melakukan ....",
+      "accept": [
+       "wudu",
+       "wudhu",
+       "berwudu",
+       "berwudhu"
+      ],
+      "a": "wudu"
+     },
+     {
+      "n": 30,
+      "q": "Salat dimulai dengan ....",
+      "accept": [
+       "takbiratul ihram",
+       "takbiratulihram"
+      ],
+      "a": "takbiratul ihram"
+     },
+     {
+      "n": 31,
+      "q": "Saat rukuk kita membaca ....",
+      "accept": [
+       "subhana rabbiyal azimi",
+       "subhana rabbiyal 'azimi",
+       "subhana rabbiyal a'zimi",
+       "subhanarabbialazimi",
+       "subhaana rabbiyal 'adziimi"
+      ],
+      "a": "Subhana rabbiyal ‘azimi"
+     },
+     {
+      "n": 32,
+      "q": "Saat sujud kita membaca ....",
+      "accept": [
+       "subhana rabbiyal a'la",
+       "subhana rabbiyal ala",
+       "subhanarabbialala",
+       "subhaana rabbiyal a'laa"
+      ],
+      "a": "Subhana rabbiyal a‘la"
+     },
+     {
+      "n": 33,
+      "q": "Salat diakhiri dengan ....",
+      "accept": [
+       "salam"
+      ],
+      "a": "salam"
+     },
+     {
+      "n": 34,
+      "q": "Nabi Nuh a.s. berdakwah kepada kaumnya agar menyembah ....",
+      "accept": [
+       "allah swt",
+       "allah",
+       "allah subhanahu wa ta'ala"
+      ],
+      "a": "Allah Swt."
+     },
+     {
+      "n": 35,
+      "q": "Kaum Nabi Nuh menyembah ....",
+      "accept": [
+       "berhala",
+       "patung"
+      ],
+      "a": "berhala"
+     },
+     {
+      "n": 36,
+      "q": "Allah menyuruh Nabi Nuh membuat ....",
+      "accept": [
+       "kapal",
+       "bahtera",
+       "kapal besar"
+      ],
+      "a": "kapal"
+     },
+     {
+      "n": 37,
+      "q": "Nabi Nuh membawa ... ke dalam kapal.",
+      "accept": [
+       "hewan",
+       "binatang"
+      ],
+      "a": "hewan"
+     },
+     {
+      "n": 38,
+      "q": "Banjir yang menenggelamkan kaum Nabi Nuh disebut ....",
+      "accept": [
+       "banjir bandang",
+       "banjir"
+      ],
+      "a": "banjir bandang"
+     },
+     {
+      "n": 39,
+      "q": "Anak Nabi Nuh yang tenggelam bernama ....",
+      "accept": [
+       "kan'an",
+       "kanan",
+       "kanan'an"
+      ],
+      "a": "Kan’an"
+     },
+     {
+      "n": 40,
+      "q": "Kita meneladani Nabi Nuh dengan bersikap ....",
+      "accept": [
+       "sabar",
+       "sabar dan pantang menyerah"
+      ],
+      "a": "sabar"
+     }
+    ]
+   },
+   {
+    "type": "tf",
+    "label": "C. Benar atau Salah",
+    "items": [
+     {
+      "n": 41,
+      "q": "Salat fardu ada lima waktu.",
+      "a": true
+     },
+     {
+      "n": 42,
+      "q": "Salat Subuh berjumlah tiga rakaat.",
+      "a": false
+     },
+     {
+      "n": 43,
+      "q": "Salat dimulai dengan salam.",
+      "a": false
+     },
+     {
+      "n": 44,
+      "q": "Saat sujud kita meletakkan dahi ke lantai.",
+      "a": true
+     },
+     {
+      "n": 45,
+      "q": "Salat Magrib berjumlah tiga rakaat.",
+      "a": true
+     },
+     {
+      "n": 46,
+      "q": "Nabi Nuh a.s. adalah utusan Allah.",
+      "a": true
+     },
+     {
+      "n": 47,
+      "q": "Semua kaum Nabi Nuh menerima dakwahnya.",
+      "a": false
+     },
+     {
+      "n": 48,
+      "q": "Nabi Nuh membuat kapal karena perintah Allah.",
+      "a": true
+     },
+     {
+      "n": 49,
+      "q": "Anak Nabi Nuh yang bernama Kan’an ikut naik kapal.",
+      "a": false
+     },
+     {
+      "n": 50,
+      "q": "Nabi Nuh berdakwah dengan sabar meskipun ditolak.",
+      "a": true
+     }
+    ]
+   }
+  ],
+  "total": 50
+ },
+ "mat": {
+  "name": "Matematika",
+  "full": "Matematika",
+  "icon": "🔢",
+  "book": "Spekta Matematika 2 — Quadra (2026)",
+  "topic": "Pelajaran 4: Penjumlahan dan Pengurangan Bilangan · Pelajaran 5: Posisi Benda dan Pola",
+  "sections": [
+   {
+    "type": "mc",
+    "label": "A. Pilihan Ganda",
+    "items": [
+     {
+      "n": 1,
+      "q": "12 + 5 = ....",
+      "o": [
+       "17",
+       "18",
+       "16"
+      ],
+      "a": 0
+     },
+     {
+      "n": 2,
+      "q": "24 + 3 = ....",
+      "o": [
+       "28",
+       "27",
+       "26"
+      ],
+      "a": 1
+     },
+     {
+      "n": 3,
+      "q": "35 + 24 = ....",
+      "o": [
+       "69",
+       "49",
+       "59"
+      ],
+      "a": 2
+     },
+     {
+      "n": 4,
+      "q": "46 + 23 = ....",
+      "o": [
+       "69",
+       "68",
+       "79"
+      ],
+      "a": 0
+     },
+     {
+      "n": 5,
+      "q": "52 + 17 = ....",
+      "o": [
+       "68",
+       "69",
+       "79"
+      ],
+      "a": 1
+     },
+     {
+      "n": 6,
+      "q": "27 + 27 = ....",
+      "o": [
+       "64",
+       "44",
+       "54"
+      ],
+      "a": 2
+     },
+     {
+      "n": 7,
+      "q": "45 + 38 = ....",
+      "o": [
+       "83",
+       "93",
+       "73"
+      ],
+      "a": 0
+     },
+     {
+      "n": 8,
+      "q": "18 − 6 = ....",
+      "o": [
+       "13",
+       "12",
+       "11"
+      ],
+      "a": 1
+     },
+     {
+      "n": 9,
+      "q": "27 − 5 = ....",
+      "o": [
+       "23",
+       "21",
+       "22"
+      ],
+      "a": 2
+     },
+     {
+      "n": 10,
+      "q": "46 − 23 = ....",
+      "o": [
+       "23",
+       "24",
+       "22"
+      ],
+      "a": 0
+     },
+     {
+      "n": 11,
+      "q": "58 − 16 = ....",
+      "o": [
+       "43",
+       "42",
+       "41"
+      ],
+      "a": 1
+     },
+     {
+      "n": 12,
+      "q": "63 − 28 = ....",
+      "o": [
+       "45",
+       "34",
+       "35"
+      ],
+      "a": 2
+     },
+     {
+      "n": 13,
+      "q": "52 − 27 = ....",
+      "o": [
+       "25",
+       "24",
+       "35"
+      ],
+      "a": 0
+     },
+     {
+      "n": 14,
+      "q": "Ibu membeli 25 apel dan 14 jeruk. Jumlah buah itu ... buah.",
+      "o": [
+       "38",
+       "39",
+       "40"
+      ],
+      "a": 1
+     },
+     {
+      "n": 15,
+      "q": "Andi mempunyai 32 kelereng. Ia diberi 20 kelereng lagi. Kelereng Andi sekarang ... butir.",
+      "o": [
+       "53",
+       "51",
+       "52"
+      ],
+      "a": 2
+     },
+     {
+      "n": 16,
+      "q": "Posisi bola yang diletakkan di atas meja adalah ....",
+      "o": [
+       "di atas",
+       "di bawah",
+       "di samping"
+      ],
+      "a": 0
+     },
+     {
+      "n": 17,
+      "q": "Buku yang diletakkan di bawah tempat tidur berada ....",
+      "o": [
+       "di atas",
+       "di bawah",
+       "di belakang"
+      ],
+      "a": 1
+     },
+     {
+      "n": 18,
+      "q": "Arah yang berlawanan dengan kanan adalah ....",
+      "o": [
+       "depan",
+       "atas",
+       "kiri"
+      ],
+      "a": 2
+     },
+     {
+      "n": 19,
+      "q": "Arah yang berlawanan dengan depan adalah ....",
+      "o": [
+       "belakang",
+       "kanan",
+       "bawah"
+      ],
+      "a": 0
+     },
+     {
+      "n": 20,
+      "q": "Pola 2, 4, 6, 8, ... bilangan berikutnya adalah ....",
+      "o": [
+       "12",
+       "10",
+       "9"
+      ],
+      "a": 1
+     },
+     {
+      "n": 21,
+      "q": "Pola 5, 10, 15, ... bilangan berikutnya adalah ....",
+      "o": [
+       "30",
+       "25",
+       "20"
+      ],
+      "a": 2
+     },
+     {
+      "n": 22,
+      "q": "Pola 20, 18, 16, ... bilangan berikutnya adalah ....",
+      "o": [
+       "14",
+       "12",
+       "15"
+      ],
+      "a": 0
+     },
+     {
+      "n": 23,
+      "q": "Pola 1, 3, 5, 7, ... bilangan berikutnya adalah ....",
+      "o": [
+       "8",
+       "9",
+       "10"
+      ],
+      "a": 1
+     },
+     {
+      "n": 24,
+      "q": "Pola merah, biru, merah, biru, ... warna berikutnya adalah ....",
+      "o": [
+       "hijau",
+       "merah",
+       "biru"
+      ],
+      "a": 2
+     },
+     {
+      "n": 25,
+      "q": "Pola 10, 20, 30, 40, ... bilangan berikutnya adalah ....",
+      "o": [
+       "50",
+       "45",
+       "60"
+      ],
+      "a": 0
+     }
+    ]
+   },
+   {
+    "type": "isian",
+    "label": "B. Isian Singkat",
+    "items": [
+     {
+      "n": 26,
+      "q": "13 + 6 = ....",
+      "accept": [
+       "19"
+      ],
+      "a": "19"
+     },
+     {
+      "n": 27,
+      "q": "41 + 25 = ....",
+      "accept": [
+       "66"
+      ],
+      "a": "66"
+     },
+     {
+      "n": 28,
+      "q": "36 + 27 = ....",
+      "accept": [
+       "63"
+      ],
+      "a": "63"
+     },
+     {
+      "n": 29,
+      "q": "29 − 7 = ....",
+      "accept": [
+       "22"
+      ],
+      "a": "22"
+     },
+     {
+      "n": 30,
+      "q": "75 − 34 = ....",
+      "accept": [
+       "41"
+      ],
+      "a": "41"
+     },
+     {
+      "n": 31,
+      "q": "60 − 26 = ....",
+      "accept": [
+       "34"
+      ],
+      "a": "34"
+     },
+     {
+      "n": 32,
+      "q": "Ayah membeli 28 buku dan 21 pensil. Jumlah alat tulis itu ... buah.",
+      "accept": [
+       "49"
+      ],
+      "a": "49"
+     },
+     {
+      "n": 33,
+      "q": "Siti mempunyai 45 permen. Ia memberikan 12 permen kepada temannya. Sisa permen Siti ... butir.",
+      "accept": [
+       "33"
+      ],
+      "a": "33"
+     },
+     {
+      "n": 34,
+      "q": "Lawan dari “di atas” adalah ....",
+      "accept": [
+       "di bawah",
+       "bawah"
+      ],
+      "a": "di bawah"
+     },
+     {
+      "n": 35,
+      "q": "Lawan dari “kiri” adalah ....",
+      "accept": [
+       "kanan"
+      ],
+      "a": "kanan"
+     },
+     {
+      "n": 36,
+      "q": "Pola 4, 8, 12, ... bilangan berikutnya adalah ....",
+      "accept": [
+       "16"
+      ],
+      "a": "16"
+     },
+     {
+      "n": 37,
+      "q": "Pola 25, 20, 15, ... bilangan berikutnya adalah ....",
+      "accept": [
+       "10"
+      ],
+      "a": "10"
+     },
+     {
+      "n": 38,
+      "q": "Pola 3, 6, 9, ... bilangan berikutnya adalah ....",
+      "accept": [
+       "12"
+      ],
+      "a": "12"
+     },
+     {
+      "n": 39,
+      "q": "Benda yang berada di belakang kita berada di ....",
+      "accept": [
+       "belakang",
+       "di belakang"
+      ],
+      "a": "belakang"
+     },
+     {
+      "n": 40,
+      "q": "Pola 15, 17, 19, ... bilangan berikutnya adalah ....",
+      "accept": [
+       "21"
+      ],
+      "a": "21"
+     }
+    ]
+   },
+   {
+    "type": "tf",
+    "label": "C. Benar atau Salah",
+    "items": [
+     {
+      "n": 41,
+      "q": "25 + 14 = 39",
+      "a": true
+     },
+     {
+      "n": 42,
+      "q": "47 − 15 = 32",
+      "a": true
+     },
+     {
+      "n": 43,
+      "q": "36 + 28 = 62",
+      "a": false
+     },
+     {
+      "n": 44,
+      "q": "50 − 23 = 27",
+      "a": true
+     },
+     {
+      "n": 45,
+      "q": "“Di atas” berlawanan dengan “di bawah”.",
+      "a": true
+     },
+     {
+      "n": 46,
+      "q": "Kanan dan kiri adalah arah yang sama.",
+      "a": false
+     },
+     {
+      "n": 47,
+      "q": "Pola 2, 4, 6, 8 berlanjut dengan 10.",
+      "a": true
+     },
+     {
+      "n": 48,
+      "q": "Pola 30, 25, 20 berlanjut dengan 15.",
+      "a": true
+     },
+     {
+      "n": 49,
+      "q": "18 + 7 = 24",
+      "a": false
+     },
+     {
+      "n": 50,
+      "q": "44 − 19 = 25",
+      "a": true
+     }
+    ]
+   }
+  ],
+  "total": 50
+ }
+};
+const PROG_KEY = 'quadra_progress_v1';
+const BEST_KEY = 'quadra_best_v1';
+let subject = null, flat = [], answers = [], cur = 0, locked = false;
+
+const $ = id => document.getElementById(id);
+
+function getStore(key){ try { return JSON.parse(localStorage.getItem(key)) || {}; } catch(e){ return {}; } }
+function setStore(key, val){ try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+function norm(s){
+  return String(s).toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[’‘`]/g,"'")
+    .replace(/[^a-z0-9' ]/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+
+function buildFlat(key){
+  const out = [];
+  DATA[key].sections.forEach(sec => {
+    sec.items.forEach(it => out.push(Object.assign({type: sec.type, label: sec.label}, it)));
+  });
+  return out;
+}
+
+function startSubject(key){
+  subject = key;
+  flat = buildFlat(key);
+  const prog = getStore(PROG_KEY)[key];
+  if (prog && Array.isArray(prog.answers) && prog.answers.length === flat.length && !prog.done){
+    answers = prog.answers;
+    cur = Math.min(prog.cur || 0, flat.length - 1);
+  } else {
+    answers = new Array(flat.length).fill(null);
+    cur = 0;
+  }
+  locked = false;
+  $('home').classList.add('hide');
+  $('result').classList.add('hide');
+  $('quiz').classList.remove('hide');
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderQuestion(){
+  const q = flat[cur];
+  const total = flat.length;
+  $('qcount').textContent = `Soal ${cur+1} / ${total} · ${DATA[subject].name}`;
+  const typeName = q.type === 'mc' ? 'Pilihan Ganda' : q.type === 'isian' ? 'Isian Singkat' : 'Benar atau Salah';
+  $('qtype').textContent = typeName;
+  $('fill').style.width = (answers.filter(a => a).length / total * 100) + '%';
+  $('qtext').textContent = `${q.n}. ${q.q}`;
+  const area = $('answerArea'); area.innerHTML = '';
+  const fb = $('feedback'); fb.innerHTML = '';
+  const saved = answers[cur];
+  locked = !!saved;
+
+  if (q.type === 'mc'){
+    q.o.forEach((text, idx) => {
+      const b = document.createElement('button');
+      b.className = 'opt' + (saved && saved.v === idx ? ' sel' : '');
+      b.innerHTML = `<span class="k">${'ABC'[idx]}.</span> ${escapeHtml(text)}`;
+      b.disabled = locked;
+      b.onclick = () => {
+        if (locked) return;
+        [...area.querySelectorAll('.opt')].forEach((c,i) => c.classList.toggle('sel', i === idx));
+        area.dataset.pick = idx;
+      };
+      area.appendChild(b);
+    });
+  } else if (q.type === 'isian'){
+    const inp = document.createElement('input');
+    inp.className = 'inp'; inp.type = 'text'; inp.id = 'isianInput';
+    inp.placeholder = 'Tulis jawabanmu di sini…'; inp.autocomplete = 'off';
+    inp.value = saved ? saved.raw : '';
+    inp.disabled = locked;
+    inp.onkeydown = e => { if (e.key === 'Enter'){ e.preventDefault(); checkAnswer(); } };
+    area.appendChild(inp);
+    if (!locked) setTimeout(() => inp.focus(), 50);
+  } else {
+    const wrap = document.createElement('div'); wrap.className = 'tf';
+    [{v:true, t:'✔ Benar'}, {v:false, t:'✘ Salah'}].forEach(o => {
+      const b = document.createElement('button');
+      b.className = 'opt' + (saved && saved.v === o.v ? ' sel' : '');
+      b.textContent = o.t; b.disabled = locked;
+      b.onclick = () => {
+        if (locked) return;
+        [...wrap.querySelectorAll('.opt')].forEach((c,i) => c.classList.toggle('sel', i === (o.v?0:1)));
+        area.dataset.pick = o.v ? 'true' : 'false';
+      };
+      wrap.appendChild(b);
+    });
+    area.appendChild(wrap);
+  }
+
+  $('checkBtn').classList.toggle('hide', locked);
+  $('nextBtn').classList.toggle('hide', !locked);
+  $('nextBtn').textContent = cur === total - 1 ? '🏁 Lihat Nilai' : 'Lanjut ➜';
+  if (saved) showFeedback(saved, q);
+}
+
+function currentPick(){
+  const q = flat[cur];
+  if (q.type === 'mc'){
+    const v = $('answerArea').dataset.pick;
+    return v === undefined ? null : parseInt(v, 10);
+  }
+  if (q.type === 'isian'){
+    const v = $('isianInput').value.trim();
+    return v ? v : null;
+  }
+  const v = $('answerArea').dataset.pick;
+  return v === undefined ? null : v === 'true';
+}
+
+function checkAnswer(){
+  if (locked) return;
+  const q = flat[cur];
+  const pick = currentPick();
+  if (pick === null){
+    $('feedback').innerHTML = `<div class="fb no">Isi jawaban dulu ya 🙂</div>`;
+    return;
+  }
+  let ok = false;
+  if (q.type === 'mc') ok = pick === q.a;
+  else if (q.type === 'tf') ok = pick === q.a;
+  else {
+    const n = norm(pick);
+    ok = q.accept.some(a => norm(a) === n);
+  }
+  answers[cur] = {v: pick, ok: ok, raw: q.type === 'isian' ? pick : undefined};
+  saveProgress();
+  locked = true;
+  renderQuestion();
+  $('fill').style.width = (answers.filter(a => a).length / flat.length * 100) + '%';
+}
+
+function showFeedback(saved, q){
+  const fb = $('feedback');
+  if (q.type === 'mc'){
+    const opts = [...$('answerArea').querySelectorAll('.opt')];
+    opts.forEach((b, i) => {
+      if (i === q.a) b.classList.add('good');
+      if (saved.v === i && !saved.ok) b.classList.add('bad');
+    });
+  } else if (q.type === 'tf'){
+    const opts = [...$('answerArea').querySelectorAll('.opt')];
+    const correctIdx = q.a ? 0 : 1;
+    opts.forEach((b, i) => {
+      if (i === correctIdx) b.classList.add('good');
+      if ((saved.v ? 0 : 1) === i && !saved.ok) b.classList.add('bad');
+    });
+  } else {
+    const inp = $('isianInput'); if (inp) inp.disabled = true;
+  }
+  const correctText = q.type === 'mc' ? `${'ABC'[q.a]}. ${q.o[q.a]}`
+    : q.type === 'tf' ? (q.a ? 'Benar' : 'Salah')
+    : q.accept[0];
+  fb.innerHTML = saved.ok
+    ? `<div class="fb ok"><b>✔ Benar!</b> Jawabanmu tepat.</div>`
+    : `<div class="fb no"><b>✘ Belum tepat.</b><br>Jawaban benar: <b>${escapeHtml(correctText)}</b></div>`;
+}
+
+function saveProgress(){
+  const store = getStore(PROG_KEY);
+  store[subject] = {answers: answers, cur: cur, done: false, updated: Date.now()};
+  setStore(PROG_KEY, store);
+}
+
+function nextQuestion(){
+  if (!answers[cur]) return;
+  if (cur < flat.length - 1){ cur++; saveProgress(); renderQuestion(); window.scrollTo({top:0, behavior:'smooth'}); }
+  else finishSubject();
+}
+
+function finishSubject(){
+  const correct = answers.filter(a => a && a.ok).length;
+  const score = Math.round(correct / flat.length * 100);
+  const store = getStore(PROG_KEY);
+  store[subject] = {answers: answers, cur: cur, done: true, score: score, updated: Date.now()};
+  setStore(PROG_KEY, store);
+  const best = getStore(BEST_KEY);
+  if (!best[subject] || score > best[subject]){ best[subject] = score; setStore(BEST_KEY, best); }
+
+  $('quiz').classList.add('hide');
+  $('result').classList.remove('hide');
+  $('resSubject').textContent = `${DATA[subject].name} · ${flat.length} soal`;
+  $('score').textContent = score;
+  $('stCorrect').textContent = correct;
+  $('stWrong').textContent = flat.length - correct;
+  $('stTotal').textContent = flat.length;
+  let emoji = '💪', msg = 'Terus berlatih! Baca lagi bagian yang salah, lalu coba sekali lagi.';
+  if (score >= 90){ emoji = '🏆'; msg = 'Luar biasa! Kamu sudah sangat menguasai pelajaran ini.'; }
+  else if (score >= 75){ emoji = '⭐'; msg = 'Hebat! Hampir semua benar. Ulangi beberapa soal yang salah ya.'; }
+  else if (score >= 60){ emoji = '👍'; msg = 'Bagus! Terus berlatih, pasti bisa lebih baik lagi.'; }
+  $('emoji').textContent = emoji; $('resMsg').textContent = msg;
+
+  const rev = $('review'); rev.innerHTML = '';
+  flat.forEach((q, i) => {
+    const a = answers[i];
+    if (a && a.ok) return;
+    const correctText = q.type === 'mc' ? `${'ABC'[q.a]}. ${q.o[q.a]}`
+      : q.type === 'tf' ? (q.a ? 'Benar' : 'Salah') : q.accept[0];
+    const yours = a ? (q.type === 'isian' ? escapeHtml(a.raw) : q.type === 'tf' ? (a.v ? 'Benar' : 'Salah') : `${'ABC'[a.v]}. ${q.o[a.v]}`) : 'Tidak dijawab';
+    rev.insertAdjacentHTML('beforeend',
+      `<div class="rev"><div class="qq">${q.n}. ${escapeHtml(q.q)}</div>
+       <div class="ans">Jawabanmu: <span class="bad">${yours}</span><br>
+       Jawaban benar: <span class="good">${escapeHtml(correctText)}</span></div></div>`);
+  });
+  if (!rev.children.length) rev.innerHTML = '<p class="note">🎉 Semua soal benar. Tidak ada yang perlu diulang!</p>';
+  renderHomeCards();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function retrySubject(){
+  const store = getStore(PROG_KEY);
+  delete store[subject]; setStore(PROG_KEY, store);
+  answers = new Array(flat.length).fill(null); cur = 0; locked = false;
+  $('result').classList.add('hide'); $('quiz').classList.remove('hide');
+  renderQuestion(); window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goHome(e){
+  if (e) e.preventDefault();
+  $('quiz').classList.add('hide'); $('result').classList.add('hide'); $('home').classList.remove('hide');
+  renderHomeCards(); window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderHomeCards(){
+  const prog = getStore(PROG_KEY), best = getStore(BEST_KEY);
+  ['pai','mat'].forEach(k => {
+    const el = $('prog-' + k); if (!el) return;
+    const p = prog[k];
+    if (p && p.done) el.textContent = `Nilai ${p.score} · terbaik ${best[k] || p.score}`;
+    else if (p && p.answers && p.answers.filter(a => a).length){
+      const done = p.answers.filter(a => a).length;
+      el.textContent = `Lanjutkan · ${done}/${flatFor(k)} soal`;
+    } else el.textContent = '50 soal';
+  });
+}
+
+function flatFor(k){
+  let n = 0; DATA[k].sections.forEach(s => n += s.items.length); return n;
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+/* ---------- print ---------- */
+function buildPrint(){
+  const box = $('printArea'); if (box.dataset.built) return;
+  let h = `<div class="pTitle">LATIHAN SOAL KELAS 2 SD</div>
+    <div class="pMeta">SD Islam Al-Syukro Universal · Senin, 23 November 2026<br>
+    Nama: ______________________________ &nbsp;&nbsp; Kelas: II ____</div>`;
+  ['pai','mat'].forEach((key, si) => {
+    const d = DATA[key];
+    h += `<div class="${si ? 'pBreak' : ''}"><div class="pSec">${d.icon} ${d.name.toUpperCase()} — ${d.topic}</div>`;
+    d.sections.forEach(sec => {
+      h += `<div class="pSec" style="font-size:10.5pt">${sec.label}</div>`;
+      sec.items.forEach(it => {
+        h += `<div class="pQ">${it.n}. ${escapeHtml(it.q)}</div>`;
+        if (it.type === 'mc') it.o.forEach((o, i) => { h += `<div class="pO">${'abc'[i]}. ${escapeHtml(o)}</div>`; });
+        else if (it.type === 'isian') h += `<div class="pO">Jawaban: ..............................................................</div>`;
+        else h += `<div class="pO">B / S</div>`;
+      });
+    });
+    h += `</div>`;
+  });
+  h += `<div class="pBreak"><div class="pTitle">KUNCI JAWABAN</div>`;
+  ['pai','mat'].forEach(key => {
+    const d = DATA[key];
+    h += `<div class="pSec">${d.name}</div>`;
+    d.sections.forEach(sec => {
+      const parts = sec.items.map(it => {
+        const a = it.type === 'mc' ? 'abc'[it.a] : it.type === 'tf' ? (it.a ? 'B' : 'S') : it.a;
+        return `${it.n}. ${a}`;
+      });
+      h += `<div class="pKey"><b>${sec.label}:</b> ${escapeHtml(parts.join(' · '))}</div>`;
+    });
+  });
+  h += `</div>`;
+  box.innerHTML = h; box.dataset.built = '1';
+}
+function printSheet(){ buildPrint(); window.print(); }
+
+renderHomeCards();
+buildPrint();
+</script>
+</body>
+</html>
